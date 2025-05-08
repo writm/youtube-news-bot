@@ -4,7 +4,7 @@
 import os
 import requests
 from gtts import gTTS
-from moviepy.editor import *
+from moviepy import *
 from datetime import datetime
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
