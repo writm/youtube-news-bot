@@ -31,6 +31,7 @@ jobs:
             # Создаем файл policy.xml, если его нет
             echo '<policys>' | sudo tee "$FILE"
             echo '  <policy domain="path" rights="read|write" pattern="@/tmp/*" />' | sudo tee -a "$FILE"
+            echo '  <policy domain="path" rights="read|write" pattern="/tmp/*" />' | sudo tee -a "$FILE"
             echo '</policys>' | sudo tee -a "$FILE"
           fi
           # Обновляем политику, если файл существует
