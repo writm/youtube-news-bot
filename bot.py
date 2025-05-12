@@ -11,6 +11,8 @@ from googleapiclient.http import MediaFileUpload
 from google.oauth2 import service_account
 import json
 
+print("Starting the bot...")
+
 # --- 1. Fetch News from NewsAPI ---
 news_api_key = os.getenv('NEWS_API_KEY')
 NEWS_ENDPOINT = f'https://newsapi.org/v2/top-headlines?country=us&pageSize=1&apiKey={NEWS_API_KEY}'
