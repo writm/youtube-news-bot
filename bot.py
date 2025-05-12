@@ -14,7 +14,7 @@ import json
 print("Starting the bot...")
 
 # --- 1. Fetch News from NewsAPI ---
-news_api_key = os.getenv('NEWS_API_KEY')
+NEWS_API_KEY = os.getenv('NEWS_API_KEY')
 NEWS_ENDPOINT = f'https://newsapi.org/v2/top-headlines?country=us&pageSize=1&apiKey={NEWS_API_KEY}'
 
 response = requests.get(NEWS_ENDPOINT)
@@ -42,7 +42,7 @@ video.write_videofile(video_path, fps=24)
 
 # --- 4. Upload to YouTube ---
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
-service_account_json = os.getenv('SERVICE_ACCOUNT_JSON')
+SERVICE_ACCOUNT_JSON = os.getenv('SERVICE_ACCOUNT_JSON')
 
 
 with open("temp_service_account.json", "w") as f:
