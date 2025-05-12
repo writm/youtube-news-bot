@@ -22,6 +22,10 @@ jobs:
       - name: Check ImageMagick version
         run: convert --version  # Проверяем, что ImageMagick установлен
 
+      - name: Update ImageMagick policy
+        run: |
+          sudo sed -i 's|<policy domain="path" rights="none" pattern="@/tmp/*" />|<policy domain="path" rights="read|write" pattern="@/tmp/*" />|' /etc/ImageMagick-7/policy.xml
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
