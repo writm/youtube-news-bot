@@ -27,15 +27,11 @@ jobs:
           # Создаём директорию, если она отсутствует
           sudo mkdir -p /etc/ImageMagick-6/
           FILE="/etc/ImageMagick-6/policy.xml"
-          if [ ! -f "$FILE" ]; then
-            # Создаем файл policy.xml, если его нет
-            echo '<policys>' | sudo tee "$FILE"
-            echo '  <policy domain="path" rights="read|write" pattern="@/tmp/*" />' | sudo tee -a "$FILE"
-            echo '  <policy domain="path" rights="read|write" pattern="/tmp/*" />' | sudo tee -a "$FILE"
-            echo '</policys>' | sudo tee -a "$FILE"
-          fi
-          # Обновляем политику, если файл существует
-          sudo sed -i.bak 's|<policy domain="path" rights="none" pattern="@/tmp/*" />|<policy domain="path" rights="read|write" pattern="@/tmp/*" />|' "$FILE" || true
+          # Создаем файл policy.xml с разрешениями
+          echo '<policys>' | sudo tee "$FILE"
+          echo '  <policy domain="path" rights="read|write" pattern="/tmp/*" />' | sudo tee -a "$FILE"
+          echo '  <policy domain="path" rights="read|write" pattern="@/tmp/*" />' | sudo tee -a "$FILE"
+          echo '</policys>' | sudo tee -a "$FILE"
 
       - name: Set up Python
         uses: actions/setup-python@v4
