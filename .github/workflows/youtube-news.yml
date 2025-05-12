@@ -24,8 +24,8 @@ jobs:
 
       - name: Update ImageMagick policy
         run: |
-          sudo mkdir -p /etc/ImageMagick/  # Создаём директорию, если она отсутствует
-          FILE="/etc/ImageMagick/policy.xml"
+          sudo mkdir -p /etc/ImageMagick-6/  # Создаём директорию, если она отсутствует
+          FILE="/etc/ImageMagick-6/policy.xml"
           if [ -f "$FILE" ]; then
             sudo sed -i.bak 's|<policy domain="path" rights="none" pattern="@/tmp/*" />|<policy domain="path" rights="read|write" pattern="@/tmp/*" />|' "$FILE"
           else
